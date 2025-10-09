@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container header__content">
+            <div class="logo">Nom Prenom</div>
+            <nav class="nav">
+                <a href="#apropos">A propos</a>
+                <a href="#projets">Projets</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container hero__content">
+                <p class="hero__eyebrow">Développeur web freelance</p>
+                <h1 class="hero__title">Je conçois des expériences digitales simples, utiles et accessibles.</h1>
+                <p class="hero__text">
+                    Basé à [votre ville], j'accompagne les marques et les startups à imaginer des produits web clairs
+                    avec un soin particulier pour l'expérience utilisateur.
+                </p>
+                <div class="hero__actions">
+                    <a class="btn" href="#projets">Voir les projets</a>
+                    <a class="btn btn--ghost" href="#contact">Me contacter</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="apropos" class="section">
+            <div class="container section__content">
+                <h2>A propos</h2>
+                <p>
+                    Je suis un développeur front-end qui aime les interfaces sobres et efficaces. Mon approche consiste à
+                    comprendre les besoins essentiels, aller à l'essentiel dans le design et optimiser pour des
+                    performances rapides sur tous les appareils.
+                </p>
+                <p>
+                    J'interviens sur la conception, le prototypage et le développement de sites vitrines, applications web
+                    et expériences interactives. Chaque projet est une collaboration et une exploration pour trouver la
+                    solution la plus simple qui fonctionne.
+                </p>
+            </div>
+        </section>
+
+        <section id="projets" class="section">
+            <div class="container section__content">
+                <h2>Projets</h2>
+                <div class="project-list">
+                    <article class="project">
+                        <h3>Nom du projet</h3>
+                        <p>
+                            Quelques phrases sur le contexte, votre rôle et l'impact du projet. Précisez le problème à
+                            résoudre et la solution proposée.
+                        </p>
+                        <p class="project__meta">Rôle principal · Technologies principales</p>
+                    </article>
+                    <article class="project">
+                        <h3>Nom du projet</h3>
+                        <p>
+                            Décrivez un projet qui illustre votre savoir-faire ou une collaboration marquante.
+                        </p>
+                        <p class="project__meta">Rôle principal · Technologies principales</p>
+                    </article>
+                    <article class="project">
+                        <h3>Nom du projet</h3>
+                        <p>
+                            Mettez en avant un projet récent, un MVP ou une exploration personnelle intéressante.
+                        </p>
+                        <p class="project__meta">Rôle principal · Technologies principales</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section section--accent">
+            <div class="container section__content">
+                <h2>Contact</h2>
+                <p>
+                    Un projet, une question ou juste envie d'échanger ? Écrivez-moi à
+                    <a href="mailto:contact@example.com">contact@example.com</a> ou remplissez le formulaire.
+                </p>
+                <form class="form">
+                    <label class="form__field">
+                        <span>Nom</span>
+                        <input type="text" name="name" placeholder="Votre nom">
+                    </label>
+                    <label class="form__field">
+                        <span>Email</span>
+                        <input type="email" name="email" placeholder="vous@example.com">
+                    </label>
+                    <label class="form__field form__field--full">
+                        <span>Message</span>
+                        <textarea name="message" rows="4" placeholder="Parlez-moi de votre projet..."></textarea>
+                    </label>
+                    <button class="btn btn--full" type="submit">Envoyer</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        © <span id="current-year"></span> Nom Prenom. Tous droits réservés.
+    </footer>
+
+    <script>
+        const yearElement = document.getElementById("current-year");
+        if (yearElement) {
+            yearElement.textContent = new Date().getFullYear().toString();
+        }
+    </script>
+</body>
+</html>
