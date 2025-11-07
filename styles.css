@@ -254,15 +254,113 @@ a:hover {
     font-size: clamp(1.6rem, 3vw, 2rem);
 }
 
+.section-intro {
+    color: var(--muted);
+    font-size: 1.05rem;
+    margin-top: -0.5rem;
+}
+
 .about-content {
     max-width: 700px;
 }
 
-/* Skills Section */
-.section--skills {
+/* Education Section */
+.section--education {
     background-color: var(--surface);
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
+}
+
+.education-timeline {
+    display: grid;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.education-item {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.education-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.education-year {
+    font-weight: 600;
+    color: var(--accent);
+    font-size: 0.95rem;
+}
+
+.education-content h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.2rem;
+}
+
+.education-specialty {
+    color: var(--accent);
+    font-weight: 500;
+    margin: 0.25rem 0;
+}
+
+.education-school {
+    color: var(--muted);
+    margin: 0.25rem 0;
+    font-size: 0.95rem;
+}
+
+.education-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.education-tag {
+    padding: 0.35rem 0.85rem;
+    background-color: var(--background);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-size: 0.8rem;
+    color: var(--muted);
+}
+
+/* Certifications */
+.certifications {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+}
+
+.certifications h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.1rem;
+}
+
+.certification-list {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.certification-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--muted);
+}
+
+.certification-item svg {
+    color: var(--accent);
+    flex-shrink: 0;
+}
+
+/* Skills Section */
+.section--skills {
+    background-color: var(--background);
 }
 
 .skills-grid {
@@ -284,7 +382,7 @@ a:hover {
 
 .skill-tag {
     padding: 0.4rem 0.9rem;
-    background-color: var(--background);
+    background-color: var(--surface);
     border: 1px solid var(--border);
     border-radius: 999px;
     font-size: 0.85rem;
@@ -294,6 +392,7 @@ a:hover {
 .skill-tag:hover {
     border-color: var(--accent);
     background-color: var(--surface);
+    transform: translateY(-1px);
 }
 
 /* Projects */
@@ -310,6 +409,7 @@ a:hover {
     display: grid;
     gap: 0.75rem;
     transition: all 0.3s ease;
+    position: relative;
 }
 
 .project:hover {
@@ -322,11 +422,26 @@ a:hover {
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
+.project__badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.25rem 0.75rem;
+    background-color: var(--accent);
+    color: white;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
 .project__header {
     display: flex;
     justify-content: space-between;
     align-items: start;
     gap: 1rem;
+    margin-top: 0.5rem;
 }
 
 .project h3 {
@@ -484,6 +599,17 @@ a:hover {
 }
 
 /* Responsive */
+@media (max-width: 768px) {
+    .education-item {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+    
+    .education-year {
+        font-size: 0.85rem;
+    }
+}
+
 @media (max-width: 640px) {
     .header__content {
         flex-direction: column;
@@ -494,6 +620,7 @@ a:hover {
     .nav {
         gap: 1rem;
         flex-wrap: wrap;
+        font-size: 0.85rem;
     }
 
     .hero {
@@ -515,5 +642,15 @@ a:hover {
 
     .social-links {
         justify-content: flex-start;
+    }
+    
+    .project__badge {
+        position: static;
+        width: fit-content;
+        margin-bottom: 0.5rem;
+    }
+    
+    .project__header {
+        margin-top: 0;
     }
 }
