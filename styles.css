@@ -596,15 +596,31 @@ a:hover {
     --ty: 0px;
 }
 
-/* Stagger pour les cartes projet */
-.project-list .project:nth-child(2) { transition-delay: 0.12s; }
-.project-list .project:nth-child(3) { transition-delay: 0.24s; }
+/* Stagger hero */
+.hero__content > .animate:nth-child(2) { transition-delay: 0.08s; }
+.hero__content > .animate:nth-child(3) { transition-delay: 0.16s; }
+.hero__content > .animate:nth-child(4) { transition-delay: 0.24s; }
+.hero__content > .animate:nth-child(5) { transition-delay: 0.32s; }
 
-/* Stagger pour les catégories de compétences */
+/* Stagger formation */
+.education-timeline .education-item:nth-child(2) { transition-delay: 0.15s; }
+
+/* Stagger certifications */
+.certification-list .certification-item:nth-child(2) { transition-delay: 0.12s; }
+
+/* Stagger compétences */
 .skills-grid .skill-category:nth-child(2) { transition-delay: 0.08s; }
 .skills-grid .skill-category:nth-child(3) { transition-delay: 0.16s; }
 .skills-grid .skill-category:nth-child(4) { transition-delay: 0.24s; }
 .skills-grid .skill-category:nth-child(5) { transition-delay: 0.32s; }
+
+/* Stagger projets */
+.project-list .project:nth-child(2) { transition-delay: 0.12s; }
+.project-list .project:nth-child(3) { transition-delay: 0.24s; }
+
+/* Stagger contact */
+.section--accent .section__content > .animate:nth-child(3) { transition-delay: 0.08s; }
+.section--accent .section__content > .animate:nth-child(4) { transition-delay: 0.16s; }
 
 @media (prefers-reduced-motion: reduce) {
     .animate {
