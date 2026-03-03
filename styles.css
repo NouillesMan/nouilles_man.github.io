@@ -581,13 +581,37 @@ a:hover {
 /* Animations */
 .animate {
     opacity: 0;
-    transform: translateY(20px);
+    --tx: 0px;
+    --ty: 24px;
+    transform: translate(var(--tx), var(--ty));
     transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
+.animate--left  { --tx: -40px; --ty: 0px; }
+.animate--right { --tx:  40px; --ty: 0px; }
+
 .animate-in {
     opacity: 1;
-    transform: translateY(0);
+    --tx: 0px;
+    --ty: 0px;
+}
+
+/* Stagger pour les cartes projet */
+.project-list .project:nth-child(2) { transition-delay: 0.12s; }
+.project-list .project:nth-child(3) { transition-delay: 0.24s; }
+
+/* Stagger pour les catégories de compétences */
+.skills-grid .skill-category:nth-child(2) { transition-delay: 0.08s; }
+.skills-grid .skill-category:nth-child(3) { transition-delay: 0.16s; }
+.skills-grid .skill-category:nth-child(4) { transition-delay: 0.24s; }
+.skills-grid .skill-category:nth-child(5) { transition-delay: 0.32s; }
+
+@media (prefers-reduced-motion: reduce) {
+    .animate {
+        --tx: 0px;
+        --ty: 0px;
+        transition: opacity 0.3s ease;
+    }
 }
 
 @keyframes slideIn {
