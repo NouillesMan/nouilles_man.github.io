@@ -8,6 +8,9 @@
     --border: rgba(15, 23, 42, 0.06);
     --border-hover: rgba(10, 101, 255, 0.4);
     --radius: 14px;
+    --radius-pill: 999px;
+    --color-error: #ef4444;
+    --color-success: #10b981;
     font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
 }
 
@@ -57,7 +60,7 @@ a:hover {
     position: sticky;
     top: 0;
     z-index: 100;
-    transition: all 0.3s ease;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .header--scrolled {
@@ -197,7 +200,7 @@ a:hover {
     border-radius: 50%;
     background-color: var(--surface);
     border: 1px solid var(--border);
-    transition: all 0.2s ease;
+    transition: border-color 0.2s ease, transform 0.2s ease;
 }
 
 .social-links a:hover {
@@ -211,10 +214,10 @@ a:hover {
     align-items: center;
     justify-content: center;
     padding: 0.75rem 1.6rem;
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
     border: 1px solid var(--border);
     background-color: var(--surface);
-    transition: all 0.2s ease;
+    transition: border-color 0.2s ease, transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
     font-weight: 500;
     cursor: pointer;
 }
@@ -324,7 +327,7 @@ a:hover {
     padding: 0.35rem 0.85rem;
     background-color: var(--background);
     border: 1px solid var(--border);
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
     font-size: 0.8rem;
     color: var(--muted);
 }
@@ -384,9 +387,9 @@ a:hover {
     padding: 0.4rem 0.9rem;
     background-color: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
     font-size: 0.85rem;
-    transition: all 0.2s ease;
+    transition: border-color 0.2s ease, transform 0.2s ease;
 }
 
 .skill-tag:hover {
@@ -408,7 +411,7 @@ a:hover {
     border: 1px solid var(--border);
     display: grid;
     gap: 0.75rem;
-    transition: all 0.3s ease;
+    transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
 }
 
@@ -429,7 +432,7 @@ a:hover {
     padding: 0.25rem 0.75rem;
     background-color: var(--accent);
     color: white;
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
     font-size: 0.75rem;
     font-weight: 600;
     text-transform: uppercase;
@@ -485,7 +488,7 @@ a:hover {
 .project__tag {
     padding: 0.3rem 0.75rem;
     background-color: var(--background);
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
     font-size: 0.8rem;
     color: var(--accent);
     font-weight: 500;
@@ -552,7 +555,7 @@ a:hover {
 }
 
 .form__error {
-    color: #ef4444;
+    color: var(--color-error);
     font-size: 0.85rem;
     margin-top: 0.25rem;
 }
@@ -560,7 +563,7 @@ a:hover {
 .form__success {
     grid-column: 1 / -1;
     padding: 1rem;
-    background-color: #10b981;
+    background-color: var(--color-success);
     color: white;
     border-radius: 10px;
     text-align: center;

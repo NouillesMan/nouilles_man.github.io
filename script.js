@@ -1,7 +1,7 @@
 // Année actuelle dans le footer
 const yearElement = document.getElementById("current-year");
 if (yearElement) {
-    yearElement.textContent = new Date().getFullYear().toString();
+    yearElement.textContent = new Date().getFullYear();
 }
 
 // Dark mode toggle
@@ -31,20 +31,12 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute("href"));
         if (target) {
-            target.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
         }
     });
 });
 
 // Animation au scroll
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: "0px 0px -50px 0px"
-};
-
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -52,36 +44,35 @@ const observer = new IntersectionObserver((entries) => {
             observer.unobserve(entry.target);
         }
     });
-}, observerOptions);
+}, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
 
-// Observer tous les éléments avec la classe "animate"
-document.querySelectorAll(".animate").forEach(el => {
-    observer.observe(el);
-});
+document.querySelectorAll(".animate").forEach(el => observer.observe(el));
 
 // Validation du formulaire
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+let successTimeout = null;
+
 const contactForm = document.getElementById("contact-form");
 if (contactForm) {
     contactForm.addEventListener("submit", (e) => {
         e.preventDefault();
-        
+
         const name = contactForm.querySelector('input[name="name"]');
         const email = contactForm.querySelector('input[name="email"]');
         const message = contactForm.querySelector('textarea[name="message"]');
-        
+
         let isValid = true;
-        
+
         // Réinitialiser les erreurs
-        document.querySelectorAll(".form__error").forEach(el => el.remove());
-        
+        contactForm.querySelectorAll(".form__error").forEach(el => el.remove());
+
         // Validation du nom
         if (!name.value.trim()) {
             showError(name, "Le nom est requis");
             isValid = false;
         }
-        
+
         // Validation de l'email
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!email.value.trim()) {
             showError(email, "L'email est requis");
             isValid = false;
@@ -89,7 +80,7 @@ if (contactForm) {
             showError(email, "L'email n'est pas valide");
             isValid = false;
         }
-        
+
         // Validation du message
         if (!message.value.trim()) {
             showError(message, "Le message est requis");
@@ -98,19 +89,19 @@ if (contactForm) {
             showError(message, "Le message doit contenir au moins 10 caractères");
             isValid = false;
         }
-        
+
         if (isValid) {
-            // Afficher un message de succès
+            clearTimeout(successTimeout);
+            contactForm.querySelector(".form__success")?.remove();
+
             const successMessage = document.createElement("div");
             successMessage.className = "form__success";
             successMessage.textContent = "Message envoyé avec succès ! Je vous répondrai dans les plus brefs délais.";
             contactForm.appendChild(successMessage);
-            
-            // Réinitialiser le formulaire
+
             contactForm.reset();
-            
-            // Supprimer le message après 5 secondes
-            setTimeout(() => {
+
+            successTimeout = setTimeout(() => {
                 successMessage.remove();
             }, 5000);
         }
@@ -125,17 +116,9 @@ function showError(input, message) {
 }
 
 // Animation du header au scroll
-let lastScroll = 0;
 const header = document.querySelector(".header");
-
-window.addEventListener("scroll", () => {
-    const currentScroll = window.pageYOffset;
-    
-    if (currentScroll > 100) {
-        header.classList.add("header--scrolled");
-    } else {
-        header.classList.remove("header--scrolled");
-    }
-    
-    lastScroll = currentScroll;
-});
+if (header) {
+    window.addEventListener("scroll", () => {
+        header.classList.toggle("header--scrolled", window.pageYOffset > 100);
+    });
+}
