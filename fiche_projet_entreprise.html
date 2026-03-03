@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fiche Projet Entreprise — Inventaire PC</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 11pt; color: #1a1a2e; background: #fff; }
+
+  .page { max-width: 210mm; margin: 0 auto; padding: 12mm 15mm; }
+
+  /* En-tête */
+  .header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 3px solid #1a1a2e; padding-bottom: 8px; margin-bottom: 12px; }
+  .header-left h1 { font-size: 18pt; font-weight: 700; color: #1a1a2e; }
+  .header-left .subtitle { font-size: 10pt; color: #555; margin-top: 2px; }
+  .header-right { text-align: right; font-size: 9pt; color: #555; }
+  .badge { display: inline-block; background: #0a3d62; color: #fff; padding: 3px 10px; border-radius: 4px; font-size: 9pt; font-weight: 600; margin-top: 4px; }
+
+  /* Sections */
+  .section { margin-bottom: 14px; }
+  .section h2 { font-size: 11pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #fff; background: #0a3d62; padding: 4px 8px; margin-bottom: 8px; }
+
+  /* Grille 2 colonnes */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  /* Info list */
+  .info-table { width: 100%; border-collapse: collapse; font-size: 10pt; }
+  .info-table tr { border-bottom: 1px solid #e5e5e5; }
+  .info-table td { padding: 4px 6px; vertical-align: top; }
+  .info-table td:first-child { font-weight: 600; width: 38%; color: #333; white-space: nowrap; }
+
+  /* Tags technos */
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 6px; }
+  .tag { background: #e3f2fd; color: #0a3d62; border: 1px solid #90caf9; padding: 2px 8px; border-radius: 3px; font-size: 9pt; font-weight: 600; }
+
+  /* Fonctionnalités */
+  .feature-list { padding-left: 16px; }
+  .feature-list li { padding: 2px 0; font-size: 10pt; }
+
+  /* Tableau compétences */
+  .comp-table { width: 100%; border-collapse: collapse; font-size: 9.5pt; }
+  .comp-table th { background: #e3f2fd; padding: 4px 6px; text-align: left; font-weight: 600; border: 1px solid #90caf9; }
+  .comp-table td { padding: 4px 6px; border: 1px solid #e5e5e5; vertical-align: top; }
+  .comp-table tr:nth-child(even) { background: #f0f8ff; }
+
+  /* Architecture */
+  .arch-box { background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; padding: 8px; font-family: monospace; font-size: 9pt; line-height: 1.6; }
+
+  /* Footer */
+  .footer { margin-top: 14px; border-top: 1px solid #ddd; padding-top: 6px; display: flex; justify-content: space-between; font-size: 8.5pt; color: #888; }
+
+  @media print {
+    body { font-size: 10.5pt; }
+    .page { padding: 8mm 12mm; max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- EN-TÊTE -->
+  <div class="header">
+    <div class="header-left">
+      <h1>Inventaire PC — Application d'entreprise</h1>
+      <div class="subtitle">BTS SIO option SLAM — Projet en entreprise</div>
+    </div>
+    <div class="header-right">
+      <div><strong>KOULOURATH Enzo</strong></div>
+      <div>BTS SIO SLAM — 2024/2026</div>
+      <div class="badge">Projet Entreprise — Individuel</div>
+    </div>
+  </div>
+
+  <!-- CONTEXTE & OBJECTIFS -->
+  <div class="section">
+    <h2>Contexte & Objectifs</h2>
+    <p style="font-size:10pt; line-height:1.5;">
+      L'entreprise ne disposait pas d'outil centralisé pour gérer son parc informatique. Les informations sur les PC
+      (matériel, utilisateurs, OS, statut) étaient dispersées dans des fichiers Excel, rendant les mises à jour fastidieuses
+      et les recherches difficiles. L'objectif est de développer une application web interne permettant la gestion complète
+      de l'inventaire informatique (CRUD), avec interface d'administration, collecte automatique des données via clé USB
+      et gestion fine des permissions par utilisateur.
+    </p>
+  </div>
+
+  <!-- INFOS PROJET + TECHNOS -->
+  <div class="grid-2">
+    <div class="section">
+      <h2>Informations générales</h2>
+      <table class="info-table">
+        <tr><td>Type</td><td>Application web PHP</td></tr>
+        <tr><td>Langage back</td><td>PHP 8.2 + PDO</td></tr>
+        <tr><td>Base de données</td><td>MariaDB 10.11 (via Docker)</td></tr>
+        <tr><td>Authentification</td><td>Session PHP + bcrypt</td></tr>
+        <tr><td>Front-end</td><td>Bootstrap 5.3 dark theme</td></tr>
+        <tr><td>Déploiement</td><td>Docker / Docker Compose</td></tr>
+        <tr><td>Dépôt GitHub</td><td>NouillesMan/projet_entreprise</td></tr>
+      </table>
+    </div>
+
+    <div class="section">
+      <h2>Technologies utilisées</h2>
+      <div class="tags">
+        <span class="tag">PHP 8.2</span>
+        <span class="tag">MariaDB</span>
+        <span class="tag">PDO</span>
+        <span class="tag">Docker</span>
+        <span class="tag">Bootstrap 5</span>
+        <span class="tag">HTML5 / CSS3</span>
+        <span class="tag">JavaScript</span>
+        <span class="tag">PowerShell</span>
+        <span class="tag">Bash</span>
+        <span class="tag">SQL</span>
+        <span class="tag">Git / GitHub</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FONCTIONNALITÉS -->
+  <div class="grid-2">
+    <div class="section">
+      <h2>Fonctionnalités principales</h2>
+      <ul class="feature-list">
+        <li>CRUD complet des PC (ajout, modification, suppression)</li>
+        <li>Recherche textuelle et filtres avancés (statut, OS, marque)</li>
+        <li>Tableau de bord avec statistiques</li>
+        <li>Gestion des utilisateurs et permissions granulaires</li>
+        <li>Panneau admin : champs dynamiques, options déroulantes</li>
+        <li>Import CSV en masse depuis l'admin</li>
+        <li>Scripts de collecte USB (Windows PowerShell / Linux Bash)</li>
+        <li>Interface responsive (desktop + mobile)</li>
+        <li>Protection CSRF sur tous les formulaires</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Architecture technique</h2>
+      <div class="arch-box">
+projet_entreprise/<br>
+├── admin/          # Gestion users, options, import<br>
+├── includes/       # Config, auth, PDO, CSRF<br>
+├── partials/       # Header, footer réutilisables<br>
+├── assets/         # CSS dark theme, JS formulaires<br>
+├── database/       # Schémas SQL (5 fichiers)<br>
+├── scripts/        # Collecte USB PS1 + sh<br>
+├── docs/           # Documentation<br>
+├── pcs.php         # Liste + filtres<br>
+├── pc_add/edit/delete.php<br>
+├── dashboard.php<br>
+└── docker-compose.yml
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPÉTENCES BTS SIO -->
+  <div class="section">
+    <h2>Compétences BTS SIO couvertes</h2>
+    <table class="comp-table">
+      <tr>
+        <th>Bloc</th>
+        <th>Compétence</th>
+        <th>Mise en œuvre dans le projet</th>
+      </tr>
+      <tr>
+        <td>B1 — Support</td>
+        <td>Gestion du parc informatique</td>
+        <td>Inventaire complet des PC avec tous les attributs matériels et logiciels</td>
+      </tr>
+      <tr>
+        <td>B2 — Dev</td>
+        <td>Conception et développement d'une application</td>
+        <td>Application PHP MVC-like avec séparation claire des responsabilités</td>
+      </tr>
+      <tr>
+        <td>B2 — Dev</td>
+        <td>Sécurité applicative</td>
+        <td>Requêtes préparées PDO, protection CSRF, bcrypt, permissions par rôle</td>
+      </tr>
+      <tr>
+        <td>B2 — Dev</td>
+        <td>Gestion des données</td>
+        <td>BDD relationnelle MariaDB, 5 tables, schémas SQL, import CSV</td>
+      </tr>
+      <tr>
+        <td>B2 — Dev</td>
+        <td>Scripting système</td>
+        <td>Scripts PowerShell (Windows) et Bash (Linux) de collecte automatique</td>
+      </tr>
+      <tr>
+        <td>B3 — Projet</td>
+        <td>Déploiement et infrastructure</td>
+        <td>Conteneurisation Docker + MariaDB, script setup.sh automatisé</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- DIFFICULTÉS & SOLUTIONS -->
+  <div class="grid-2">
+    <div class="section">
+      <h2>Difficultés rencontrées</h2>
+      <ul class="feature-list">
+        <li>Gestion des champs dynamiques (ajout/masquage sans modifier le code)</li>
+        <li>Import CSV avec validation et gestion des doublons</li>
+        <li>Collecte USB sur FAT32 (bit exécutable absent)</li>
+        <li>Synchronisation des schémas SQL multiples au démarrage Docker</li>
+        <li>Interface responsive adaptée desktop et mobile simultanément</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Solutions apportées</h2>
+      <ul class="feature-list">
+        <li>Table <code>custom_fields</code> pour la gestion dynamique des champs</li>
+        <li>Validation PHP des colonnes CSV, skip des numéros de série existants</li>
+        <li>Documentation explicite : <code>sudo bash ./collect_linux.sh</code> sur FAT32</li>
+        <li>Script <code>setup.sh</code> avec healthcheck et import automatique des SQL</li>
+        <li>Sidebar Bootstrap offcanvas pour mobile, fixe pour desktop</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- BILAN -->
+  <div class="section">
+    <h2>Bilan & acquis</h2>
+    <p style="font-size:10pt; line-height:1.5;">
+      Ce projet m'a permis de développer une application web PHP complète répondant à un besoin réel d'entreprise.
+      J'ai approfondi mes compétences en sécurité PHP (PDO, CSRF, bcrypt), en conception de base de données relationnelle
+      et en déploiement Docker. La réalisation des scripts de collecte USB en PowerShell et Bash m'a permis d'aborder
+      le scripting système multi-plateforme. Ce projet illustre ma capacité à livrer une solution fonctionnelle et
+      documentée de bout en bout.
+    </p>
+  </div>
+
+  <div class="footer">
+    <span>KOULOURATH Enzo — BTS SIO SLAM 2024/2026</span>
+    <span>github.com/NouillesMan/projet_entreprise</span>
+    <span>Mars 2026</span>
+  </div>
+
+</div>
+</body>
+</html>
