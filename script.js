@@ -4,26 +4,8 @@ if (yearElement) {
     yearElement.textContent = new Date().getFullYear();
 }
 
-// Dark mode toggle
-const darkModeToggle = document.getElementById("dark-mode-toggle");
-const html = document.documentElement;
-
-// Vérifier la préférence sauvegardée
-const savedTheme = localStorage.getItem("theme");
-if (savedTheme) {
-    html.setAttribute("data-theme", savedTheme);
-} else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-    html.setAttribute("data-theme", "dark");
-}
-
-if (darkModeToggle) {
-    darkModeToggle.addEventListener("click", () => {
-        const currentTheme = html.getAttribute("data-theme");
-        const newTheme = currentTheme === "dark" ? "light" : "dark";
-        html.setAttribute("data-theme", newTheme);
-        localStorage.setItem("theme", newTheme);
-    });
-}
+// P5 aesthetic — always dark
+document.documentElement.setAttribute("data-theme", "dark");
 
 // Smooth scroll pour les liens d'ancrage
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
