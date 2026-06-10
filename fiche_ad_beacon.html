@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fiche Projet Perso — ad-beacon</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 11pt; color: #1a1a2e; background: #fff; }
+
+  .page { max-width: 210mm; margin: 0 auto; padding: 12mm 15mm; }
+
+  /* En-tête */
+  .header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 3px solid #4527a0; padding-bottom: 8px; margin-bottom: 12px; }
+  .header-left h1 { font-size: 18pt; font-weight: 700; color: #4527a0; }
+  .header-left .subtitle { font-size: 10pt; color: #555; margin-top: 2px; }
+  .header-right { text-align: right; font-size: 9pt; color: #555; }
+  .badge { display: inline-block; background: #4527a0; color: #fff; padding: 3px 10px; border-radius: 4px; font-size: 9pt; font-weight: 600; margin-top: 4px; }
+
+  /* Sections */
+  .section { margin-bottom: 14px; }
+  .section h2 { font-size: 11pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #fff; background: #4527a0; padding: 4px 8px; margin-bottom: 8px; }
+
+  /* Grille 2 colonnes */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  /* Info list */
+  .info-table { width: 100%; border-collapse: collapse; font-size: 10pt; }
+  .info-table tr { border-bottom: 1px solid #e5e5e5; }
+  .info-table td { padding: 4px 6px; vertical-align: top; }
+  .info-table td:first-child { font-weight: 600; width: 38%; color: #333; white-space: nowrap; }
+
+  /* Tags technos */
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 6px; }
+  .tag { background: #ede7f6; color: #4527a0; border: 1px solid #b39ddb; padding: 2px 8px; border-radius: 3px; font-size: 9pt; font-weight: 600; }
+
+  /* Fonctionnalités */
+  .feature-list { padding-left: 16px; }
+  .feature-list li { padding: 2px 0; font-size: 10pt; }
+
+  /* Tableau compétences */
+  .comp-table { width: 100%; border-collapse: collapse; font-size: 9.5pt; }
+  .comp-table th { background: #ede7f6; padding: 4px 6px; text-align: left; font-weight: 600; border: 1px solid #b39ddb; }
+  .comp-table td { padding: 4px 6px; border: 1px solid #e5e5e5; vertical-align: top; }
+  .comp-table tr:nth-child(even) { background: #f7f4fc; }
+
+  /* Architecture */
+  .arch-box { background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; padding: 8px; font-family: monospace; font-size: 9pt; line-height: 1.6; }
+
+  /* Footer */
+  .footer { margin-top: 14px; border-top: 1px solid #ddd; padding-top: 6px; display: flex; justify-content: space-between; font-size: 8.5pt; color: #888; }
+
+  @media print {
+    body { font-size: 10.5pt; }
+    .page { padding: 8mm 12mm; max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- EN-TÊTE -->
+  <div class="header">
+    <div class="header-left">
+      <h1>ad-beacon — Audit Active Directory</h1>
+      <div class="subtitle">BTS SIO option SLAM — Projet personnel</div>
+    </div>
+    <div class="header-right">
+      <div><strong>KOULOURATH Enzo</strong></div>
+      <div>BTS SIO SLAM — 2024/2026</div>
+      <div class="badge">Projet personnel — Individuel</div>
+    </div>
+  </div>
+
+  <!-- CONTEXTE & OBJECTIFS -->
+  <div class="section">
+    <h2>Contexte & Objectifs</h2>
+    <p style="font-size:10pt; line-height:1.5;">
+      Auditer un annuaire Active Directory implique de recenser ses objets (utilisateurs, groupes, ordinateurs) et les
+      informations du domaine. L'objectif est de fournir un outil en ligne de commande qui interroge un domaine via
+      LDAP/LDAPS et restitue ces données sous forme d'exports exploitables (JSON, CSV) et de rapports HTML.
+    </p>
+  </div>
+
+  <!-- INFOS PROJET + TECHNOS -->
+  <div class="grid-2">
+    <div class="section">
+      <h2>Informations générales</h2>
+      <table class="info-table">
+        <tr><td>Type</td><td>Outil en ligne de commande (CLI)</td></tr>
+        <tr><td>Langage</td><td>Python 3.8+</td></tr>
+        <tr><td>Protocole</td><td>LDAP / LDAPS</td></tr>
+        <tr><td>Interface CLI</td><td>Bibliothèque Rich</td></tr>
+        <tr><td>Architecture</td><td>Orientée objet, modulaire</td></tr>
+        <tr><td>Exports</td><td>JSON, CSV, rapports HTML</td></tr>
+        <!-- TODO Enzo : ajouter l'URL du dépôt ad-beacon, ou retirer cette ligne -->
+        <tr><td>Dépôt GitHub</td><td>à venir</td></tr>
+      </table>
+    </div>
+
+    <div class="section">
+      <h2>Technologies utilisées</h2>
+      <div class="tags">
+        <span class="tag">Python 3.8+</span>
+        <span class="tag">Active Directory</span>
+        <span class="tag">LDAP</span>
+        <span class="tag">LDAPS</span>
+        <span class="tag">Rich</span>
+        <span class="tag">CLI</span>
+        <span class="tag">JSON</span>
+        <span class="tag">CSV</span>
+        <span class="tag">POO</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FONCTIONNALITÉS -->
+  <div class="grid-2">
+    <div class="section">
+      <h2>Fonctionnalités principales</h2>
+      <ul class="feature-list">
+        <li>Connexion à un domaine Active Directory en LDAP/LDAPS</li>
+        <li>Recensement des utilisateurs du domaine</li>
+        <li>Recensement des groupes et de leurs membres</li>
+        <li>Recensement des ordinateurs</li>
+        <li>Collecte des informations du domaine</li>
+        <li>Export des résultats en JSON et CSV</li>
+        <li>Génération de rapports HTML</li>
+        <li>Interface CLI lisible (bibliothèque Rich)</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Architecture technique</h2>
+      <div class="arch-box">
+ad-beacon/<br>
+├── ad_beacon/<br>
+│   ├── ldap/          # Connexion LDAP/LDAPS<br>
+│   ├── collectors/    # Users, groups, computers<br>
+│   ├── export/        # JSON, CSV, HTML<br>
+│   └── cli.py         # Interface Rich<br>
+├── reports/           # Rapports générés<br>
+└── README.md
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPÉTENCES BTS SIO -->
+  <div class="section">
+    <h2>Compétences BTS SIO couvertes</h2>
+    <table class="comp-table">
+      <tr>
+        <th>Bloc</th>
+        <th>Compétence</th>
+        <th>Mise en œuvre dans le projet</th>
+      </tr>
+      <tr>
+        <td>B1 — Support</td>
+        <td>Connaissance de l'annuaire / domaine</td>
+        <td>Interrogation d'un Active Directory via LDAP/LDAPS</td>
+      </tr>
+      <tr>
+        <td>B2 — Dev</td>
+        <td>Conception et développement d'un outil</td>
+        <td>CLI Python orientée objet, architecture modulaire</td>
+      </tr>
+      <tr>
+        <td>B2 — Dev</td>
+        <td>Gestion et restitution des données</td>
+        <td>Exports JSON / CSV et génération de rapports HTML</td>
+      </tr>
+      <tr>
+        <td>B3 — Cyber</td>
+        <td>Cybersécurité / audit</td>
+        <td>Recensement des objets d'un domaine à des fins d'audit</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- BILAN -->
+  <div class="section">
+    <h2>Bilan & acquis</h2>
+    <p style="font-size:10pt; line-height:1.5;">
+      Ce projet personnel m'a permis d'approfondir le fonctionnement d'Active Directory et du protocole LDAP/LDAPS, ainsi
+      que le développement d'un outil en ligne de commande en Python avec une architecture orientée objet et modulaire.
+      La génération d'exports (JSON, CSV) et de rapports HTML m'a sensibilisé à la restitution claire des résultats d'audit.
+    </p>
+  </div>
+
+  <div class="footer">
+    <span>KOULOURATH Enzo — BTS SIO SLAM 2024/2026</span>
+    <!-- TODO Enzo : remplacer par l'URL du dépôt ad-beacon -->
+    <span>Projet personnel</span>
+    <span>2026</span>
+  </div>
+
+</div>
+</body>
+</html>

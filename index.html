@@ -1,328 +1,376 @@
 <!DOCTYPE html>
-<html lang="fr" data-theme="dark">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="color-scheme" content="dark">
-    <meta name="description" content="Portfolio de KOULOURATH Enzo - Étudiant en BTS SIO option SLAM, développeur passionné à la recherche d'opportunités professionnelles.">
-    <meta name="keywords" content="BTS SIO, SLAM, développeur, étudiant, stage, alternance, portfolio, développement logiciel">
-    <meta name="author" content="KOULOURATH Enzo">
-    
-    <!-- Open Graph / Facebook -->
+    <meta name="description" content="Portfolio d'Enzo Koulourath, étudiant en BTS SIO option SLAM (2024–2026) à l'ESNA de Bruz, en alternance chez Synopsis Corporation. Développement d'applications, web full-stack et sécurité.">
+    <meta name="author" content="Enzo Koulourath">
+    <meta name="keywords" content="Enzo Koulourath, BTS SIO, SLAM, développeur, portfolio, Bruz, alternance, PHP, Python, React">
+    <title>Enzo Koulourath — Portfolio BTS SIO SLAM</title>
+
+    <!-- Open Graph / réseaux sociaux -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://nouillesmen.github.io/nouilles_man.github.io/">
-    <meta property="og:title" content="KOULOURATH Enzo - Étudiant BTS SIO SLAM">
-    <meta property="og:description" content="Portfolio d'un étudiant passionné par le développement d'applications et de solutions logicielles.">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://nouillesmen.github.io/nouilles_man.github.io/">
-    <meta property="twitter:title" content="KOULOURATH Enzo - Étudiant BTS SIO SLAM">
-    <meta property="twitter:description" content="Portfolio d'un étudiant passionné par le développement d'applications et de solutions logicielles.">
-    
-    <title>KOULOURATH Enzo - Portfolio BTS SIO SLAM</title>
+    <meta property="og:title" content="Enzo Koulourath — Portfolio BTS SIO SLAM">
+    <meta property="og:description" content="Étudiant en BTS SIO option SLAM (2024–2026) à l'ESNA de Bruz, en alternance chez Synopsis Corporation. Développement d'applications, web full-stack et sécurité.">
+    <meta property="og:locale" content="fr_FR">
+    <!-- TODO Enzo : confirmer og:url (URL GitHub Pages) + ajouter og:image (capture du portfolio) -->
+    <meta property="og:url" content="https://nouillesman.github.io/nouilles_man.github.io/">
+    <meta name="twitter:card" content="summary">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💻%3C/text%3E%3C/svg%3E">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🌙%3C/text%3E%3C/svg%3E">
 </head>
 <body>
-    <header class="header">
-        <div class="container header__content">
-            <div class="logo">KOULOURATH Enzo</div>
-            <nav class="nav">
-                <a href="#apropos">À propos</a>
-                <a href="#formation">Formation</a>
-                <a href="#competences">Compétences</a>
-                <a href="#projets">Projets</a>
-                <a href="#contact">Contact</a>
-                <button id="dark-mode-toggle" class="theme-toggle" aria-label="Changer de thème">
-                    <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                    <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                </button>
-            </nav>
+
+<!-- ══ BACKGROUND ══════════════════════════════════════════ -->
+<div class="bg-layer" aria-hidden="true">
+    <div class="bg-keyart"></div>
+    <canvas id="bg-particles" class="bg-particles"></canvas>
+    <div class="bg-overlay"></div>
+    <div class="bg-scanlines"></div>
+    <div class="bg-sweep-line"></div>
+</div>
+
+<!-- ══ FLASH ═══════════════════════════════════════════════ -->
+<div id="flash-overlay" class="flash-overlay" aria-hidden="true"></div>
+
+<!-- ══ TOPBAR ══════════════════════════════════════════════ -->
+<header class="topbar">
+    <div class="topbar__left">
+        <img class="topbar__logo" src="assets/logo-p3r.png" alt="Persona 3 Reload"
+             onerror="this.style.display='none'">
+        <span class="topbar__name">KOULOURATH ENZO</span>
+    </div>
+    <div class="topbar__dots" role="tablist">
+        <button class="topbar__dot active" data-goto="0" aria-label="Home"></button>
+        <button class="topbar__dot"        data-goto="1" aria-label="About"></button>
+        <button class="topbar__dot"        data-goto="2" aria-label="Resume"></button>
+        <button class="topbar__dot"        data-goto="3" aria-label="Socials"></button>
+    </div>
+    <div class="topbar__right">BTS SIO &nbsp;·&nbsp; SLAM</div>
+</header>
+
+<!-- ══ CHARACTER ════════════════════════════════════════════ -->
+<aside class="char-display" aria-hidden="true">
+    <img class="char-img" id="char-0" src="assets/char-home.png"   alt="Protagonist">
+    <img class="char-img" id="char-1" src="assets/char-about.png"  alt="Akihiko">
+    <img class="char-img" id="char-2" src="assets/char-resume.png" alt="Aigis">
+    <img class="char-img" id="char-3" src="assets/char-socials.png" alt="Mitsuru">
+    <div class="char-nametag">
+        <span class="char-nametag__name" id="char-name">MAKOTO YUKI</span>
+        <span class="char-nametag__sub"  id="char-sub">PROTAGONIST</span>
+    </div>
+</aside>
+
+<!-- ══ PAGES ════════════════════════════════════════════════ -->
+<main class="pages-container">
+
+    <!-- ╔══════════════════════════════════════════════╗
+         ║  PAGE 0 — HOME  (title screen style)        ║
+         ╚══════════════════════════════════════════════╝ -->
+    <section class="page page--active" id="page-0" data-page="0" aria-label="Home">
+
+        <!-- [Hint] top-left -->
+        <div class="hint-bar">
+            <span class="hint-tag">INFO</span>
+            <span class="hint-text">Portfolio de KOULOURATH Enzo — BTS SIO SLAM</span>
         </div>
-    </header>
 
-    <main>
-        <section class="hero">
-            <div class="container hero__content">
-                <p class="hero__eyebrow animate">Étudiant en BTS SIO option SLAM</p>
-                <h1 class="hero__title animate">Développeur passionné par la création de solutions logicielles innovantes</h1>
-                <p class="hero__text animate">
-                    Actuellement en formation BTS Services Informatiques aux Organisations, spécialité Solutions Logicielles et Applications Métiers,
-                    je développe mes compétences en programmation, bases de données et conception d'applications.
-                </p>
-                <div class="hero__actions animate">
-                    <a class="btn" href="#projets">Voir mes projets</a>
-                    <a class="btn btn--ghost" href="#contact">Me contacter</a>
-                </div>
-                <div class="social-links animate">
-                    <a href="https://github.com/NouillesMan" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                        </svg>
-                    </a>
-                    <a href="https://linkedin.com/in/votre-profil" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                        </svg>
-                    </a>
-                    <a href="mailto:contact@example.com" aria-label="Email">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                            <polyline points="22,6 12,13 2,6"></polyline>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </section>
+        <!-- Big left title (like PRESS ANY BUTTON) -->
+        <div class="home-title-block">
+            <p class="home-eyebrow">Persona3 RELOAD</p>
+            <h1 class="home-bigtext">
+                KOULOURATH<br>
+                <span class="home-bigtext__accent">ENZO</span>
+            </h1>
+            <p class="home-role">Étudiant BTS SIO · SLAM · Développeur</p>
+        </div>
 
-        <section id="apropos" class="section">
-            <div class="container section__content">
-                <h2 class="animate">À propos</h2>
-                <div class="about-content animate animate--left">
-                    <p>
-                        Passionné par l'informatique et le développement depuis plusieurs années, j'ai choisi de me spécialiser dans le développement 
-                        d'applications en intégrant le BTS SIO option SLAM. Cette formation me permet d'acquérir des compétences solides en 
-                        programmation orientée objet, conception de bases de données et développement d'applications web et mobiles.
-                    </p>
-                    <p>
-                        Mon objectif est de devenir un développeur polyvalent, capable de concevoir et réaliser des solutions logicielles 
-                        adaptées aux besoins des utilisateurs. Je suis particulièrement intéressé par le développement web moderne, 
-                        les architectures logicielles et l'optimisation des performances.
-                    </p>
-                    <p>
-                        Actuellement à la recherche d'opportunités professionnelles (stage, alternance), je suis motivé pour mettre en pratique 
-                        mes connaissances et continuer à apprendre au sein d'une équipe dynamique.
-                    </p>
-                </div>
-            </div>
-        </section>
+        <!-- Bottom-right menu (like NEW GAME / LOAD GAME / CONFIG) -->
+        <nav class="title-menu" aria-label="Navigation principale">
+            <ul class="title-menu__list">
+                <li class="tmitem" tabindex="0" data-action="page" data-value="1">ABOUT ME</li>
+                <li class="tmitem" tabindex="0" data-action="page" data-value="2">RESUME</li>
+                <li class="tmitem" tabindex="0" data-action="external"
+                    data-value="https://github.com/NouillesMan">GITHUB</li>
+                <li class="tmitem" tabindex="0" data-action="page" data-value="3">SOCIALS</li>
+            </ul>
+        </nav>
 
-        <section id="formation" class="section section--education">
-            <div class="container section__content">
-                <h2 class="animate">Formation</h2>
-                <div class="education-timeline">
-                    <div class="education-item animate animate--right">
-                        <div class="education-year">2024 - 2026</div>
-                        <div class="education-content">
-                            <h3>BTS SIO - Services Informatiques aux Organisations</h3>
-                            <p class="education-specialty">Option SLAM (Solutions Logicielles et Applications Métiers)</p>
-                            <p class="education-school">Nom de votre établissement</p>
-                            <div class="education-skills">
-                                <span class="education-tag">Programmation Orientée Objet</span>
-                                <span class="education-tag">Bases de données</span>
-                                <span class="education-tag">Développement Web</span>
-                                <span class="education-tag">Gestion de projet</span>
-                                <span class="education-tag">Cybersécurité</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="education-item animate animate--right">
-                        <div class="education-year">Année</div>
-                        <div class="education-content">
-                            <h3>Baccalauréat</h3>
-                            <p class="education-specialty">Spécialité (ex: NSI, STI2D, etc.)</p>
-                            <p class="education-school">Nom de votre lycée</p>
-                        </div>
-                    </div>
-                </div>
+        <!-- Bottom-right prompts (A Confirm B Back style) -->
+        <div class="page-prompts">
+            <span class="prompts__guide">Guide</span>
+            <span>↑ ↓ &nbsp;Select &nbsp;&nbsp; Enter &nbsp;Confirm &nbsp;&nbsp; LB/RB &nbsp;Navigate</span>
+        </div>
 
-                <div class="certifications">
-                    <h3 class="animate">Certifications</h3>
-                    <div class="certification-list">
-                        <div class="certification-item animate animate--left">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                            </svg>
-                            <span>Certification PIX (niveau à préciser)</span>
-                        </div>
-                        <div class="certification-item animate animate--left">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                            </svg>
-                            <span>Autres certifications (optionnel)</span>
-                        </div>
-                    </div>
+        <!-- Watermark -->
+        <div class="page-wm" aria-hidden="true">PORTFOLIO</div>
+    </section>
+
+
+    <!-- ╔══════════════════════════════════════════════╗
+         ║  PAGE 1 — ABOUT  (CONFIG style)             ║
+         ╚══════════════════════════════════════════════╝ -->
+    <section class="page" id="page-1" data-page="1" aria-label="About Me">
+
+        <!-- [Hint] -->
+        <div class="hint-bar">
+            <span class="hint-tag">INFO</span>
+            <span class="hint-text" id="about-hint">À propos de KOULOURATH Enzo</span>
+        </div>
+
+        <!-- Diagonal panel (parallelogram, like CONFIG screen) -->
+        <div class="cfg-panel" aria-hidden="true"></div>
+
+        <div class="cfg-content">
+
+            <!-- Tab list — active = white box + pink border, others = teal text -->
+            <div class="cfg-tabs" role="tablist">
+                <div class="cfg-tab cfg-tab--active" role="tab" tabindex="0"
+                     data-tab="0" aria-selected="true" aria-controls="cfg-pane-0">
+                    <span class="cfg-tab__icon" aria-hidden="true">◆</span>
+                    ABOUT ME
+                </div>
+                <div class="cfg-tab" role="tab" tabindex="0"
+                     data-tab="1" aria-selected="false" aria-controls="cfg-pane-1">
+                    FUN FACT ABOUT ME
+                </div>
+                <div class="cfg-tab" role="tab" tabindex="0"
+                     data-tab="2" aria-selected="false" aria-controls="cfg-pane-2">
+                    WIRED FACT ABOUT ME
                 </div>
             </div>
-        </section>
 
-        <section id="competences" class="section section--skills">
-            <div class="container section__content">
-                <h2 class="animate">Compétences techniques</h2>
-                <div class="skills-grid">
-                    <div class="skill-category animate animate--left">
-                        <h3>Langages de programmation</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Python</span>
-                            <span class="skill-tag">Java</span>
-                            <span class="skill-tag">PHP</span>
-                            <span class="skill-tag">JavaScript</span>
-                            <span class="skill-tag">C#</span>
-                            <span class="skill-tag">SQL</span>
-                        </div>
-                    </div>
-                    <div class="skill-category animate animate--left">
-                        <h3>Développement Web</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">HTML5</span>
-                            <span class="skill-tag">CSS3</span>
-                            <span class="skill-tag">JavaScript</span>
-                            <span class="skill-tag">React</span>
-                            <span class="skill-tag">Vue.js</span>
-                            <span class="skill-tag">Bootstrap</span>
-                        </div>
-                    </div>
-                    <div class="skill-category animate animate--left">
-                        <h3>Bases de données</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">MySQL</span>
-                            <span class="skill-tag">PostgreSQL</span>
-                            <span class="skill-tag">MongoDB</span>
-                            <span class="skill-tag">SQLite</span>
-                            <span class="skill-tag">Merise</span>
-                            <span class="skill-tag">UML</span>
-                        </div>
-                    </div>
-                    <div class="skill-category animate animate--left">
-                        <h3>Frameworks & Outils</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Git / GitHub</span>
-                            <span class="skill-tag">Node.js</span>
-                            <span class="skill-tag">Django</span>
-                            <span class="skill-tag">Symfony</span>
-                            <span class="skill-tag">VS Code</span>
-                            <span class="skill-tag">Docker</span>
-                        </div>
-                    </div>
-                    <div class="skill-category animate animate--left">
-                        <h3>Méthodologies</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Agile / Scrum</span>
-                            <span class="skill-tag">POO</span>
-                            <span class="skill-tag">MVC</span>
-                            <span class="skill-tag">REST API</span>
-                            <span class="skill-tag">Tests unitaires</span>
-                            <span class="skill-tag">Veille technologique</span>
-                        </div>
-                    </div>
+            <!-- Content panes -->
+            <div class="cfg-pane-wrap">
+                <div class="cfg-pane cfg-pane--active" id="cfg-pane-0"
+                     role="tabpanel" aria-labelledby="tab-0">
+                    <p>Étudiant en BTS SIO option SLAM (2024–2026) à l'ESNA de Bruz, je me forme
+                    au développement de solutions logicielles et d'applications métiers.</p>
+                    <p>Je réalise mon alternance chez Synopsis Corporation (Villebon-sur-Yvette), où
+                    je conçois des outils internes. Compétences en POO, conception de bases de données,
+                    développement web full-stack et sécurité applicative.</p>
+                    <p>Objectif : devenir un développeur polyvalent maîtrisant les architectures
+                    logicielles modernes et les standards du web. Anglais : niveau intermédiaire.</p>
+                </div>
+                <div class="cfg-pane" id="cfg-pane-1"
+                     role="tabpanel" aria-labelledby="tab-1" hidden>
+                    <!-- TODO Enzo : remplacer par de vrais "fun facts" personnels (loisirs, centres d'intérêt…) -->
+                    <ul class="cfg-list">
+                        <li><em>À compléter par Enzo : ajoute ici tes vrais fun facts.</em></li>
+                    </ul>
+                </div>
+                <div class="cfg-pane" id="cfg-pane-2"
+                     role="tabpanel" aria-labelledby="tab-2" hidden>
+                    <!-- TODO Enzo : remplacer par de vrais "wired facts" personnels -->
+                    <ul class="cfg-list">
+                        <li><em>À compléter par Enzo : ajoute ici tes vrais wired facts.</em></li>
+                    </ul>
                 </div>
             </div>
-        </section>
 
-        <section id="projets" class="section">
-            <div class="container section__content">
-                <h2 class="animate">Projets & Réalisations</h2>
-                <p class="section-intro animate">Découvrez mes projets personnels et scolaires (PPE - Projets Personnalisés Encadrés)</p>
-
-                <div class="project-list">
-                    <article class="project animate">
-                        <div class="project__badge">PPE</div>
-                        <div class="project__header">
-                            <h3>P5 — Système de Gestion Logistique</h3>
-                            <div class="project__links">
-                                <a href="https://github.com/BTS-ESNA-2024-2026/P5-stock" target="_blank" rel="noopener noreferrer" class="project__link" title="Voir sur GitHub">
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                        <p>
-                            Application web de gestion logistique développée en équipe dans le cadre du BTS SIO.
-                            Permet la gestion d'assets matériels, le suivi des missions et la génération de rapports.
-                            Authentification sécurisée par token JWT avec clés RSA, accès rôle-based (RBAC).
-                            Déploiement conteneurisé via Docker avec base de données MySQL.
-                        </p>
-                        <div class="project__tags">
-                            <span class="project__tag">Python</span>
-                            <span class="project__tag">Flask</span>
-                            <span class="project__tag">MySQL</span>
-                            <span class="project__tag">Docker</span>
-                            <span class="project__tag">JWT / RSA</span>
-                            <span class="project__tag">REST API</span>
-                        </div>
-                    </article>
-
-                    <article class="project animate">
-                        <div class="project__badge">Entreprise</div>
-                        <div class="project__header">
-                            <h3>Inventaire PC — Application d'entreprise</h3>
-                            <div class="project__links">
-                                <a href="https://github.com/NouillesMan/projet_entreprise" target="_blank" rel="noopener noreferrer" class="project__link" title="Voir sur GitHub">
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                        <p>
-                            Application PHP de gestion d'inventaire informatique (CRUD complet). Interface dark theme responsive,
-                            recherche et filtres avancés, panneau d'administration avec gestion des utilisateurs et permissions.
-                            Scripts PowerShell/Bash de collecte automatique via clé USB, import CSV en masse.
-                            Déploiement Docker avec MariaDB, protection CSRF et requêtes préparées PDO.
-                        </p>
-                        <div class="project__tags">
-                            <span class="project__tag">PHP 8.2</span>
-                            <span class="project__tag">MariaDB</span>
-                            <span class="project__tag">Docker</span>
-                            <span class="project__tag">Bootstrap 5</span>
-                            <span class="project__tag">PDO</span>
-                            <span class="project__tag">PowerShell</span>
-                        </div>
-                    </article>
+            <!-- Stats strip (like ON / OFF toggles in CONFIG) -->
+            <div class="cfg-stats">
+                <div class="cstat">
+                    <span class="cstat__val">4</span>
+                    <span class="cstat__lbl">PROJETS</span>
+                </div>
+                <div class="cstat">
+                    <span class="cstat__val">2+</span>
+                    <span class="cstat__lbl">ANS FORM.</span>
+                </div>
+                <div class="cstat">
+                    <span class="cstat__val">10+</span>
+                    <span class="cstat__lbl">TECH</span>
+                </div>
+                <div class="cstat">
+                    <span class="cstat__val">∞</span>
+                    <span class="cstat__lbl">MOTIVATION</span>
                 </div>
             </div>
-        </section>
 
-        <section id="contact" class="section section--accent">
-            <div class="container section__content">
-                <h2 class="animate">Contact</h2>
-                <p class="animate">
-                    <strong>Actuellement à la recherche d'opportunités professionnelles</strong> (stage, alternance). 
-                    N'hésitez pas à me contacter pour échanger sur vos projets ou pour toute opportunité !
-                </p>
-                <p class="animate">
-                    Vous pouvez me joindre par email à <a href="mailto:contact@example.com">contact@example.com</a> 
-                    ou remplir le formulaire ci-dessous.
-                </p>
-                <form id="contact-form" class="form animate animate--left">
-                    <label class="form__field">
-                        <span>Nom</span>
-                        <input type="text" name="name" placeholder="Votre nom" required>
-                    </label>
-                    <label class="form__field">
-                        <span>Email</span>
-                        <input type="email" name="email" placeholder="vous@example.com" required>
-                    </label>
-                    <label class="form__field form__field--full">
-                        <span>Message</span>
-                        <textarea name="message" rows="4" placeholder="Parlez-moi de votre projet ou opportunité..." required></textarea>
-                    </label>
-                    <button class="btn btn--full" type="submit">Envoyer</button>
-                </form>
+        </div>
+
+        <div class="page-prompts">
+            <span class="prompts__guide">Which do you want to view?</span>
+            <span>↑ ↓ &nbsp;Select &nbsp;&nbsp; Enter &nbsp;Confirm &nbsp;&nbsp; LB/RB &nbsp;Navigate</span>
+        </div>
+
+        <div class="page-wm" aria-hidden="true">ABOUT</div>
+    </section>
+
+
+    <!-- ╔══════════════════════════════════════════════╗
+         ║  PAGE 2 — RESUME  (Load game style)         ║
+         ╚══════════════════════════════════════════════╝ -->
+    <section class="page" id="page-2" data-page="2" aria-label="Resume">
+
+        <div class="hint-bar">
+            <span class="hint-tag">DATA</span>
+            <span class="hint-text" id="resume-hint">Sélectionner une section du CV</span>
+        </div>
+
+        <!-- Save-slot style list -->
+        <div class="save-list">
+
+            <div class="save-slot save-slot--active" tabindex="0"
+                 role="button" data-detail="education" aria-label="Education">
+                <span class="slot-num">1</span>
+                <div class="slot-info">
+                    <div class="slot-top">
+                        <span class="slot-cat">EDUCATION</span>
+                        <span class="slot-period">2024 → 2026</span>
+                        <span class="slot-loc">BTS SIO — SLAM</span>
+                        <span class="slot-playtime">PLAY TIME &nbsp;<strong>2 ANS</strong></span>
+                    </div>
+                    <div class="slot-bottom">
+                        <span class="slot-lv">Lv. 2</span>
+                        <span class="slot-char">KOULOURATH Enzo</span>
+                    </div>
+                </div>
+                <div class="slot-rank rank-s" aria-label="Rang S">S</div>
             </div>
-        </section>
-    </main>
 
-    <footer class="footer">
-        © <span id="current-year"></span> KOULOURATH Enzo - Étudiant BTS SIO SLAM. Tous droits réservés.
-    </footer>
+            <div class="save-slot" tabindex="0"
+                 role="button" data-detail="skills" aria-label="Skills">
+                <span class="slot-num">2</span>
+                <div class="slot-info">
+                    <div class="slot-top">
+                        <span class="slot-cat">SKILLS</span>
+                        <span class="slot-period">Python · PHP · JS</span>
+                        <span class="slot-loc">Compétences techniques</span>
+                        <span class="slot-playtime">TECH &nbsp;<strong>10+</strong></span>
+                    </div>
+                    <div class="slot-bottom">
+                        <span class="slot-lv">Lv. 8</span>
+                        <span class="slot-char">Full Stack · DevOps</span>
+                    </div>
+                </div>
+                <div class="slot-rank rank-a" aria-label="Rang A">A</div>
+            </div>
 
-    <script src="script.js"></script>
+            <div class="save-slot" tabindex="0"
+                 role="button" data-detail="projects" aria-label="Projects">
+                <span class="slot-num">3</span>
+                <div class="slot-info">
+                    <div class="slot-top">
+                        <span class="slot-cat">PROJECTS</span>
+                        <span class="slot-period">2024 → 2026</span>
+                        <span class="slot-loc">4 projets · Pro / PPE / Perso</span>
+                        <span class="slot-playtime">COUNT &nbsp;<strong>4</strong></span>
+                    </div>
+                    <div class="slot-bottom">
+                        <span class="slot-lv">Lv. 6</span>
+                        <span class="slot-char">PHP · Python · React · Next.js</span>
+                    </div>
+                </div>
+                <div class="slot-rank rank-b" aria-label="Rang B">B</div>
+            </div>
+
+            <div class="save-slot" tabindex="0"
+                 role="button" data-detail="experience" aria-label="Experience">
+                <span class="slot-num">4</span>
+                <div class="slot-info">
+                    <div class="slot-top">
+                        <span class="slot-cat">EXPERIENCE</span>
+                        <span class="slot-period">2024 → 2026</span>
+                        <span class="slot-loc">Alternance · Synopsis Corporation</span>
+                        <span class="slot-playtime">STATUS &nbsp;<strong>En poste</strong></span>
+                    </div>
+                    <div class="slot-bottom">
+                        <span class="slot-lv">Lv. 5</span>
+                        <span class="slot-char">Villebon-sur-Yvette (91)</span>
+                    </div>
+                </div>
+                <div class="slot-rank rank-c" aria-label="Rang C">C</div>
+            </div>
+
+        </div>
+
+        <!-- Detail drawer — slides in from bottom when slot selected -->
+        <div class="slot-detail" id="slot-detail" aria-live="polite">
+            <!-- Populated by JS -->
+        </div>
+
+        <div class="page-prompts">
+            <span class="prompts__guide">Load data?</span>
+            <span>Enter &nbsp;Confirm &nbsp;&nbsp; LB/RB &nbsp;Navigate</span>
+        </div>
+
+        <!-- LOAD-style diagonal watermark (right, like screenshot 5) -->
+        <div class="page-wm page-wm--load" aria-hidden="true">RESUME</div>
+    </section>
+
+
+    <!-- ╔══════════════════════════════════════════════╗
+         ║  PAGE 3 — SOCIALS  (System menu style)      ║
+         ╚══════════════════════════════════════════════╝ -->
+    <section class="page" id="page-3" data-page="3" aria-label="Socials">
+
+        <div class="hint-bar">
+            <span class="hint-tag">LINK</span>
+            <span class="hint-text">Retrouvez-moi sur ces plateformes</span>
+        </div>
+
+        <!-- Right-side system menu (like TUTORIAL / CONFIG / SAVE DATA) -->
+        <div class="sys-menu" role="list">
+
+            <a class="sys-item sys-item--active" role="listitem"
+               href="https://github.com/NouillesMan" target="_blank" rel="noopener noreferrer">
+                <span class="si-label">GITHUB</span>
+                <span class="si-sub">@NouillesMan</span>
+            </a>
+
+            <a class="sys-item" role="listitem"
+               href="https://www.linkedin.com/in/enzokoulourath-3944b7227" target="_blank" rel="noopener noreferrer">
+                <span class="si-label">LINKEDIN</span>
+                <span class="si-sub">Enzo Koulourath</span>
+            </a>
+
+            <a class="sys-item" role="listitem"
+               href="mailto:enzokoulourath@gmail.com">
+                <span class="si-label">EMAIL</span>
+                <span class="si-sub">enzokoulourath@gmail.com</span>
+            </a>
+
+            <a class="sys-item" role="listitem"
+               href="https://github.com/NouillesMan/projet_entreprise"
+               target="_blank" rel="noopener noreferrer">
+                <span class="si-label">PROJET ENTREPRISE</span>
+                <span class="si-sub">NouillesMan/projet_entreprise</span>
+            </a>
+
+        </div>
+
+        <div class="page-prompts">
+            <span class="prompts__guide">View Links</span>
+            <span>Enter &nbsp;Open &nbsp;&nbsp; LB/RB &nbsp;Navigate</span>
+        </div>
+
+        <!-- SYSTEM-style watermark (bottom, very large + dark, like screenshot 6) -->
+        <div class="page-wm page-wm--system" aria-hidden="true">SYSTEM</div>
+    </section>
+
+</main>
+
+<!-- ══ BOTTOM NAV ════════════════════════════════════════ -->
+<nav class="bottom-nav" aria-label="Navigation LB / RB">
+    <button class="nav-btn nav-lb" id="btn-lb" aria-label="Page précédente" disabled>
+        <span class="nav-btn__arrow">◄</span>
+        <span class="nav-btn__lbl">LB</span>
+    </button>
+    <div class="nav-indicator" aria-live="polite">
+        <span id="page-current">01</span><span class="nav-sep"> / </span><span>04</span>
+    </div>
+    <button class="nav-btn nav-rb" id="btn-rb" aria-label="Page suivante">
+        <span class="nav-btn__lbl">RB</span>
+        <span class="nav-btn__arrow">►</span>
+    </button>
+</nav>
+
+<script src="script.js"></script>
 </body>
 </html>

@@ -62,7 +62,7 @@
   <!-- EN-TÊTE -->
   <div class="header">
     <div class="header-left">
-      <h1>P5 — Système de Gestion Logistique</h1>
+      <h1>SGLM — Système de Gestion Logistique Militaire</h1>
       <div class="subtitle">BTS SIO option SLAM — Projet Personnalisé Encadré (PPE)</div>
     </div>
     <div class="header-right">
@@ -76,9 +76,9 @@
   <div class="section">
     <h2>Contexte & Objectifs</h2>
     <p style="font-size:10pt; line-height:1.5;">
-      Une organisation gère ses stocks et sa flotte de véhicules de façon partiellement manuelle, entraînant des erreurs de suivi,
-      des ruptures critiques et une visibilité limitée. L'objectif est de centraliser la gestion complète des assets matériels
-      dans une application web sécurisée, avec suivi en temps réel, gestion des missions et rapports automatisés.
+      Le suivi du matériel d'une base militaire (assets, missions, bases) était dispersé et difficile à tracer. L'objectif est de
+      centraliser ce suivi dans une application web sécurisée, conforme aux recommandations de l'ANSSI, avec gestion des assets,
+      des missions et des bases, contrôle d'accès par rôles et authentification renforcée.
     </p>
   </div>
 
@@ -87,30 +87,33 @@
     <div class="section">
       <h2>Informations générales</h2>
       <table class="info-table">
-        <tr><td>Type</td><td>Application web (API REST + front)</td></tr>
-        <tr><td>Langage back</td><td>Python 3 — Flask</td></tr>
-        <tr><td>Base de données</td><td>MySQL (via Docker)</td></tr>
-        <tr><td>Authentification</td><td>JWT avec clés RSA 2048 bits</td></tr>
-        <tr><td>Déploiement</td><td>Docker / Docker Compose</td></tr>
-        <tr><td>Dépôt GitHub</td><td>BTS-ESNA-2024-2026/P5-stock</td></tr>
-        <tr><td>Rôle</td><td>Développeur back-end / sécurité</td></tr>
+        <tr><td>Type</td><td>Application web (API REST + SPA)</td></tr>
+        <tr><td>Front-end</td><td>React 19 + TypeScript (Vite)</td></tr>
+        <tr><td>Back-end</td><td>Flask 3 (Python) + SQLAlchemy</td></tr>
+        <tr><td>Base de données</td><td>PostgreSQL (via Docker)</td></tr>
+        <tr><td>Authentification</td><td>JWT RS256 (cookie httponly) + Argon2 + 2FA TOTP</td></tr>
+        <tr><td>Monorepo</td><td>pnpm + Turbo — CI GitHub Actions</td></tr>
+        <tr><td>Dépôt GitHub</td><td>BTS-ESNA-2024-2026/P5-stock (privé)</td></tr>
       </table>
     </div>
 
     <div class="section">
       <h2>Technologies utilisées</h2>
       <div class="tags">
-        <span class="tag">Python 3</span>
-        <span class="tag">Flask</span>
+        <span class="tag">React 19</span>
+        <span class="tag">TypeScript</span>
+        <span class="tag">Vite</span>
+        <span class="tag">Flask 3</span>
+        <span class="tag">Python</span>
         <span class="tag">SQLAlchemy</span>
-        <span class="tag">MySQL</span>
+        <span class="tag">PostgreSQL</span>
         <span class="tag">Docker</span>
-        <span class="tag">JWT</span>
-        <span class="tag">RSA 2048</span>
+        <span class="tag">JWT RS256</span>
+        <span class="tag">Argon2</span>
+        <span class="tag">2FA TOTP</span>
         <span class="tag">REST API</span>
-        <span class="tag">HTML/CSS</span>
-        <span class="tag">JavaScript</span>
-        <span class="tag">Git / GitHub</span>
+        <span class="tag">pnpm / Turbo</span>
+        <span class="tag">GitHub Actions</span>
       </div>
     </div>
   </div>
@@ -120,30 +123,30 @@
     <div class="section">
       <h2>Fonctionnalités principales</h2>
       <ul class="feature-list">
-        <li>Tableau de bord avec statistiques en temps réel</li>
-        <li>Gestion des assets matériels (CRUD complet)</li>
-        <li>Suivi des missions et affectation d'assets</li>
-        <li>Gestion des utilisateurs avec rôles (RBAC)</li>
-        <li>Authentification sécurisée par token JWT/RSA</li>
-        <li>Génération de rapports</li>
-        <li>Administration du panneau utilisateurs</li>
-        <li>API REST consommée par le front</li>
+        <li>Tableau de bord avec statistiques</li>
+        <li>Gestion des assets, missions et bases (CRUD complet)</li>
+        <li>Contrôle d'accès par rôles — RBAC à 5 rôles</li>
+        <li>Authentification JWT RS256 en cookie httponly/Secure/SameSite</li>
+        <li>Mots de passe hachés avec Argon2</li>
+        <li>Double authentification (2FA TOTP)</li>
+        <li>API REST consommée par le front React</li>
+        <li>Conformité aux recommandations ANSSI</li>
       </ul>
     </div>
 
     <div class="section">
       <h2>Architecture technique</h2>
       <div class="arch-box">
-src/<br>
-├── core/<br>
-│   ├── routes/        # Routes Flask (auth, CRUD)<br>
-│   ├── decorators/    # Décorateurs d'accès RBAC<br>
-│   ├── middleware.py  # Middleware JWT<br>
-│   └── tools.py       # Utilitaires<br>
-├── templates/         # Pages HTML<br>
-├── static/            # CSS, favicon<br>
-database/              # Scripts SQL<br>
-docker-compose.yml     # Orchestration
+monorepo/   (pnpm + Turbo)<br>
+├── apps/<br>
+│   ├── web/        # Front React 19 + TS (Vite)<br>
+│   └── api/        # Back Flask 3 + SQLAlchemy<br>
+│       ├── routes/     # Endpoints REST<br>
+│       ├── auth/       # JWT RS256, Argon2, 2FA<br>
+│       └── models/     # Modèles PostgreSQL<br>
+├── packages/       # Code partagé (types…)<br>
+├── .github/workflows/  # CI GitHub Actions<br>
+└── docker-compose.yml  # Orchestration
       </div>
     </div>
   </div>
@@ -170,12 +173,12 @@ docker-compose.yml     # Orchestration
       <tr>
         <td>B2 — Dev</td>
         <td>Sécurité applicative</td>
-        <td>Authentification RSA/JWT, protection des endpoints</td>
+        <td>JWT RS256 (cookie httponly), Argon2, 2FA TOTP, conformité ANSSI</td>
       </tr>
       <tr>
         <td>B2 — Dev</td>
         <td>Gestion des données</td>
-        <td>Modèle relationnel MySQL, ORM SQLAlchemy</td>
+        <td>Modèle relationnel PostgreSQL, ORM SQLAlchemy</td>
       </tr>
       <tr>
         <td>B3 — Projet</td>
@@ -195,20 +198,20 @@ docker-compose.yml     # Orchestration
     <div class="section">
       <h2>Difficultés rencontrées</h2>
       <ul class="feature-list">
-        <li>Mise en place de l'authentification RSA/JWT depuis zéro</li>
-        <li>Coordination en équipe sur un dépôt partagé (conflits Git)</li>
-        <li>Structuration de l'API REST avec Flask blueprints</li>
-        <li>Synchronisation Docker + base de données au démarrage</li>
+        <li>Mise en place de l'authentification JWT RS256 + 2FA TOTP</li>
+        <li>Coordination en équipe sur un monorepo partagé (conflits Git)</li>
+        <li>Structuration de l'API REST Flask et du front React</li>
+        <li>Synchronisation Docker + PostgreSQL au démarrage</li>
       </ul>
     </div>
 
     <div class="section">
       <h2>Solutions apportées</h2>
       <ul class="feature-list">
-        <li>Génération de paires de clés RSA via OpenSSL, middleware JWT dédié</li>
-        <li>Utilisation de branches Git et pull requests systématiques</li>
-        <li>Organisation en blueprints Flask (auth, CRUD, root)</li>
-        <li>Healthcheck Docker Compose pour attendre la DB</li>
+        <li>Clés RSA pour signer/vérifier les JWT (RS256), TOTP pour la 2FA</li>
+        <li>Branches Git, pull requests et CI GitHub Actions systématiques</li>
+        <li>Monorepo pnpm + Turbo séparant clairement front et back</li>
+        <li>Healthcheck Docker Compose pour attendre PostgreSQL</li>
       </ul>
     </div>
   </div>
@@ -217,10 +220,10 @@ docker-compose.yml     # Orchestration
   <div class="section">
     <h2>Bilan & acquis</h2>
     <p style="font-size:10pt; line-height:1.5;">
-      Ce projet m'a permis de maîtriser le développement d'une API REST sécurisée avec Flask, la mise en place d'une
-      authentification robuste par JWT avec cryptographie asymétrique (RSA), ainsi que le déploiement d'une application
-      complète via Docker. Le travail en équipe sur GitHub m'a également permis d'acquérir de solides pratiques de
-      gestion de version et de collaboration en mode projet.
+      Ce projet m'a permis de travailler sur une application full-stack moderne (React 19 + TypeScript / Flask 3 + PostgreSQL)
+      organisée en monorepo pnpm + Turbo, et de mettre en place une authentification robuste conforme ANSSI (JWT RS256 en
+      cookie httponly, Argon2, 2FA TOTP, RBAC à 5 rôles). Le travail en équipe sur GitHub avec intégration continue m'a
+      également permis d'acquérir de solides pratiques de gestion de version et de collaboration en mode projet.
     </p>
   </div>
 
